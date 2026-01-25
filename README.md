@@ -102,7 +102,7 @@ The query outputs an executive-style security dashboard with the following secti
 ├── sql/
 │   ├── schema.sql           -- NOT YET ADDED
 │   ├── sample_data.sql      -- NOT YET ADDED
-│   └── soc_dashboard.sql
+│   └── executive_security_dashboard.sql
 ├── diagrams/
 │   └── data_model.png       -- NOT YET ADDED
 ├── README.md
