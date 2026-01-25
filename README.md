@@ -46,7 +46,7 @@ It is designed to mirror real SOC workflows, including:
 The dashboard implements multiple SOC-style detections using SQL:
 
 - **Brute Force Compromise**
-  - >= 3 failed login attempts from the same source IP followed by a successful login
+  - For >= 3 failed login attempts from the same source IP followed by a successful login
 
 - **Password Spraying**
   - A single source IP targeting >= 5 distinct users with failed login attempts
