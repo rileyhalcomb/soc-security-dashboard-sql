@@ -1,0 +1,113 @@
+{
+  "generated_at": "2026-01-25T19:14:54.323970",
+  "summary": {
+    "total_events": 43,
+    "failed_logins": 17,
+    "successful_logins": 26,
+    "external_threats": 4
+  },
+  "scenarios": [
+    {
+      "scenario": "Normal Activity",
+      "event_count": 12,
+      "failed_count": 3,
+      "success_count": 9
+    },
+    {
+      "scenario": "Service Account",
+      "event_count": 9,
+      "failed_count": 0,
+      "success_count": 9
+    },
+    {
+      "scenario": "Other",
+      "event_count": 9,
+      "failed_count": 2,
+      "success_count": 7
+    },
+    {
+      "scenario": "Password Spraying",
+      "event_count": 8,
+      "failed_count": 8,
+      "success_count": 0
+    },
+    {
+      "scenario": "Brute Force",
+      "event_count": 5,
+      "failed_count": 4,
+      "success_count": 1
+    }
+  ],
+  "threat_actors": [
+    {
+      "ip_address": "185.220.101.47/32",
+      "total_attempts": 5,
+      "successful": 1,
+      "failed": 4,
+      "users_targeted": 1,
+      "usernames": "admin",
+      "severity": "Critical",
+      "x_jitter": 4.939654948734831,
+      "y_jitter": 0.9740037447535079
+    },
+    {
+      "ip_address": "73.241.12.56/32",
+      "total_attempts": 1,
+      "successful": 1,
+      "failed": 0,
+      "users_targeted": 1,
+      "usernames": "tgarcia",
+      "severity": "Medium",
+      "x_jitter": 1.0567951480925308,
+      "y_jitter": 1.019859508577746
+    },
+    {
+      "ip_address": "203.0.113.88/32",
+      "total_attempts": 1,
+      "successful": 1,
+      "failed": 0,
+      "users_targeted": 1,
+      "usernames": "lbrown",
+      "severity": "Medium",
+      "x_jitter": 0.9986743745697079,
+      "y_jitter": 1.0238772462651349
+    },
+    {
+      "ip_address": "198.51.100.42/32",
+      "total_attempts": 8,
+      "successful": 0,
+      "failed": 8,
+      "users_targeted": 8,
+      "usernames": "dbaker, jsmith, kwilson, lbrown, mjones, rjohnson, schen, tgarcia",
+      "severity": "High",
+      "x_jitter": 8.091314171367452,
+      "y_jitter": 8.046934727713861
+    }
+  ],
+  "critical_assets": [
+    {
+      "hostname": "vpn-gateway",
+      "asset_criticality": "HIGH",
+      "attack_count": 8,
+      "unique_attackers": 1
+    },
+    {
+      "hostname": "webserver-prod-01",
+      "asset_criticality": "HIGH",
+      "attack_count": 5,
+      "unique_attackers": 2
+    },
+    {
+      "hostname": "dc-corp-01",
+      "asset_criticality": "CRITICAL",
+      "attack_count": 3,
+      "unique_attackers": 2
+    },
+    {
+      "hostname": "database-prod-01",
+      "asset_criticality": "CRITICAL",
+      "attack_count": 1,
+      "unique_attackers": 1
+    }
+  ]
+}
