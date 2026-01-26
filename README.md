@@ -397,7 +397,7 @@ This project demonstrates proficiency in **CompTIA CySA+ (CS0-003)** exam object
 
 ## Project Structure
 ```
-security-data-warehouse/
+security-data-warehouse (soc-security-dashboard-sql)/
 ├── schema/                          # Database schema definitions
 │   ├── create_database.sql
 │   ├── 01_create_dim_users.sql
