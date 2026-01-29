@@ -355,14 +355,14 @@ Contributions welcome! Please:
 
 MIT License - See [LICENSE](LICENSE) file for details.
 
----
+---[requirements.txt](../../../../Downloads/requirements.txt)
 
 ## 👤 Author
 
-**Your Name**
-- LinkedIn: [your-profile](https://linkedin.com/in/yourprofile)
-- Portfolio: [yourwebsite.com](https://yourwebsite.com)
-- Email: your.email@example.com
+**Riley Halcomb**
+- LinkedIn: [rileyhalcomb](https://linkedin.com/in/rileyhalcomb)
+- Portfolio: [themiraiproject](https://themiraiproject.vercel.app/)
+- Email: rileyhalcomb@proton.me
 
 **Skills Demonstrated:**
 - SQL (PostgreSQL)
