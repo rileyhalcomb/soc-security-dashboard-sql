@@ -1,0 +1,19 @@
+# Security Data Warehouse - Python Dependencies
+# Compatible with Python 3.8+
+
+# Database Connection
+psycopg2-binary==2.9.9    # PostgreSQL adapter for Python
+
+# Data Manipulation
+pandas==2.1.4              # Data analysis and manipulation
+numpy==1.24.3              # Numerical computing
+
+# Visualization
+plotly==5.18.0             # Interactive charts and graphs
+
+# Templating
+Jinja2==3.1.2              # Template engine for HTML generation
+
+# Optional: Development Tools
+# ipython==8.18.1          # Enhanced Python shell for debugging
+# jupyter==1.0.0           # Notebook interface for exploration
