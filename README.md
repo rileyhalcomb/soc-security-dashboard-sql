@@ -45,16 +45,16 @@ This project implements a complete **security analytics pipeline** using Postgre
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    Data Warehouse Layer                      │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
-│  │ dim_users    │  │ dim_hosts    │  │ dim_time     │      │
-│  │ - user_id    │  │ - host_id    │  │ - date       │      │
-│  │ - username   │  │ - hostname   │  │ - hour       │      │
-│  │ - department │  │ - criticality│  │ - day_of_week│      │
-│  └──────────────┘  └──────────────┘  └──────────────┘      │
-│           │               │                                  │
-│           └───────┬───────┘                                  │
-│                   ▼                                          │
+│                    Data Warehouse Layer                     │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐       │
+│  │ dim_users    │  │ dim_hosts    │  │ dim_time     │       │
+│  │ - user_id    │  │ - host_id    │  │ - date       │       │
+│  │ - username   │  │ - hostname   │  │ - hour       │       │
+│  │ - department │  │ - criticality│  │ - day_of_week│       │
+│  └──────────────┘  └──────────────┘  └──────────────┘       │
+│           │               │                                 │
+│           └───────┬───────┘                                 │
+│                   ▼                                         │
 │         ┌──────────────────────┐                            │
 │         │ fact_auth_events     │                            │
 │         │ - event_id           │                            │
@@ -68,17 +68,17 @@ This project implements a complete **security analytics pipeline** using Postgre
                           │
                           ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                   Analytics Layer (SQL)                      │
-│  ┌────────────────┐  ┌────────────────┐  ┌────────────────┐│
-│  │ Brute Force    │  │ Password Spray │  │ Compromised    ││
-│  │ Detection      │  │ Detection      │  │ Accounts       ││
-│  └────────────────┘  └────────────────┘  └────────────────┘│
+│                   Analytics Layer (SQL)                     │
+│  ┌────────────────┐  ┌────────────────┐  ┌────────────────┐ │
+│  │ Brute Force    │  │ Password Spray │  │ Compromised    │ │ 
+│  │ Detection      │  │ Detection      │  │ Accounts       │ │
+│  └────────────────┘  └────────────────┘  └────────────────┘ │
 └─────────────────────────────────────────────────────────────┘
                           │
                           ▼
 ┌─────────────────────────────────────────────────────────────┐
-│              Visualization Layer (Python + Plotly)           │
-│  generate_dashboard.py → Interactive HTML Dashboard          │
+│              Visualization Layer (Python + Plotly)          │
+│  generate_dashboard.py → Interactive HTML Dashboard         │
 └─────────────────────────────────────────────────────────────┘
 ```
 
