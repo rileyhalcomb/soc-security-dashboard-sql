@@ -24,7 +24,7 @@ DB_CONFIG = {
 
 # Output paths
 OUTPUT_DIR = Path(__file__).parent / 'output'
-TEMPLATE_DIR = Path(__file__).parent / 'templates'
+TEMPLATE_DIR = Path(__file__).parent.parent / 'templates'
 OUTPUT_DIR.mkdir(exist_ok=True)
 TEMPLATE_DIR.mkdir(exist_ok=True)
 
