@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOC Security Dashboard - Temporal Analysis</title>
+    <style>
+        body {
+            background-color: #0e1117;
+            color: #e6edf3;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: #f0f6fc;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 3px solid #58a6ff;
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: #58a6ff;
+            font-size: 1.8em;
+            margin-top: 0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .timestamp {
+            color: #8b949e;
+            font-size: 0.9em;
+        }
+
+        .dashboard-section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .metric-card {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #58a6ff;
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            color: #8b949e;
+            margin-top: 5px;
+        }
+
+        .metric {
+            font-size: 1.1em;
+            margin: 10px 0;
+            padding: 8px;
+            background: #0d1117;
+            border-radius: 6px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .badge {
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.85em;
+            margin-left: 10px;
+        }
+
+        .badge-critical {
+            background: #ff4d4d;
+            color: #000;
+        }
+
+        .badge-high {
+            background: #ff9933;
+            color: #000;
+        }
+
+        .badge-medium {
+            background: #ffcc00;
+            color: #000;
+        }
+
+        .badge-low {
+            background: #2ecc71;
+            color: #000;
+        }
+
+        .chart-container {
+            background: #0d1117;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 15px 0;
+        }
+
+        .info-box {
+            background: #1c2128;
+            border-left: 4px solid #58a6ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+            color: #58a6ff;
+        }
+
+        .temporal-section {
+            border-left: 4px solid #f97316;
+            padding-left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🛡️ SOC Security Dashboard</h1>
+        <p class="timestamp">Generated: {{ summary.generated_at }}</p>
+        <p class="timestamp">✨ Now with Temporal Analysis</p>
+    </div>
+
+    <div class="dashboard-section">
+        <h2>📊 Overview Metrics</h2>
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="metric-value">{{ summary.total_events }}</div>
+                <div class="metric-label">Total Events</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">{{ summary.failed_logins }}</div>
+                <div class="metric-label">Failed Logins</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">{{ summary.successful_logins }}</div>
+                <div class="metric-label">Successful Logins</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">{{ summary.external_threats }}</div>
+                <div class="metric-label">External Threats</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: TEMPORAL ANALYSIS SECTION -->
+    <div class="dashboard-section temporal-section">
+        <h2>⏰ Temporal Analysis - When Attacks Happen</h2>
+        <div class="info-box">
+            <h3>Why Time Matters</h3>
+            <p>Attackers often operate during off-hours (nights, weekends) when security monitoring is reduced. Understanding <strong>when</strong> attacks occur helps prioritize resources and detect anomalous behavior.</p>
+        </div>
+
+        <h3>📈 Attack Distribution by Hour</h3>
+        <div class="chart-container">
+            {{ charts.hourly_heatmap | safe }}
+        </div>
+        <p style="color: #8b949e; font-size: 0.9em;">
+            <strong>Interpretation:</strong> Peaks during late-night hours (22:00-06:00) indicate attackers prefer low-monitoring periods.
+            Business hours (08:00-17:00) attacks may indicate insider threats or compromised VPN accounts.
+        </p>
+
+        <h3>🕐 Business Hours vs Off-Hours</h3>
+        <div class="chart-container">
+            {{ charts.business_hours | safe }}
+        </div>
+        <p style="color: #8b949e; font-size: 0.9em;">
+            <strong>Interpretation:</strong> Higher off-hours activity suggests external attackers.
+            Higher business hours activity may indicate insider threats or lateral movement attempts.
+        </p>
+
+        <h3>📅 Day of Week Patterns</h3>
+        <div class="chart-container">
+            {{ charts.day_of_week | safe }}
+        </div>
+        <p style="color: #8b949e; font-size: 0.9em;">
+            <strong>Interpretation:</strong> Weekend spikes (red bars) indicate automated attacks or persistent threat actors.
+            Weekday patterns should align with normal business activity.
+        </p>
+    </div>
+
+    <!-- ORIGINAL SECTIONS -->
+    <div class="dashboard-section">
+        <h2>📈 Event Distribution</h2>
+        <div class="chart-container">
+            {{ charts.event_distribution | safe }}
+        </div>
+    </div>
+
+    <div class="dashboard-section">
+        <h2>📊 Scenario Breakdown</h2>
+        <div class="chart-container">
+            {{ charts.scenario_bar | safe }}
+        </div>
+    </div>
+
+    <div class="dashboard-section">
+        <h2>🎯 Threat Actor Analysis</h2>
+        <div class="chart-container">
+            {{ charts.threat_scatter | safe }}
+        </div>
+    </div>
+
+    <div class="dashboard-section">
+        <h2>⏱️ Attack Timeline</h2>
+        <div class="chart-container">
+            {{ charts.attack_timeline | safe }}
+        </div>
+    </div>
+
+    <div class="dashboard-section">
+        <h2>🏢 Critical Assets Under Attack</h2>
+        <ul>
+            {% for asset in critical_assets %}
+            <li class="metric">
+                <strong>{{ asset.hostname }}</strong> ({{ asset.asset_criticality }})
+                &mdash; {{ asset.attack_count }} attacks from {{ asset.unique_attackers }} source(s)
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="dashboard-section">
+        <h2>👤 Threat Actors</h2>
+        <ul>
+            {% for actor in threat_actors %}
+            <li class="metric">
+                <strong>{{ actor.ip_address }}</strong>
+                <span class="badge badge-{{ actor.severity|lower }}">{{ actor.severity }}</span>
+                &mdash; {{ actor.total_attempts }} attempts
+                ({{ actor.successful }} successful, {{ actor.failed }} failed)
+                <br>
+                <small style="color: #8b949e;">Targeted: {{ actor.usernames }}</small>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="dashboard-section">
+        <h2>✅ Security Recommendations</h2>
+        <ul>
+            <li class="metric">🔴 <strong>CRITICAL:</strong> Reset compromised account passwords immediately</li>
+            <li class="metric">🟠 <strong>HIGH:</strong> Block malicious external IP addresses</li>
+            <li class="metric">🟡 <strong>MEDIUM:</strong> Provide security awareness training to targeted users</li>
+            <li class="metric">🔵 <strong>INFO:</strong> Review VPN access policies and implement MFA</li>
+            <li class="metric">⏰ <strong>NEW:</strong> Increase monitoring during identified high-risk time periods (nights/weekends)</li>
+        </ul>
+    </div>
+
+    <div class="dashboard-section">
+        <h2>📚 Temporal Analysis Guide</h2>
+        <div class="info-box">
+            <h3>How to Use This Data</h3>
+            <ul style="list-style: disc; padding-left: 20px; color: #e6edf3;">
+                <li><strong>Hourly Heatmap:</strong> Schedule extra SOC coverage during peak attack hours</li>
+                <li><strong>Business Hours:</strong> Off-hours attacks warrant immediate investigation</li>
+                <li><strong>Day of Week:</strong> Weekend activity from non-IT staff = red flag</li>
+            </ul>
+
+            <h3>Action Items</h3>
+            <ul style="list-style: disc; padding-left: 20px; color: #e6edf3;">
+                <li>Configure SIEM alerts to be more sensitive during high-risk periods</li>
+                <li>Review admin account activity outside business hours</li>
+                <li>Investigate any finance/HR logins at 3 AM on weekends</li>
+                <li>Compare current patterns against established baselines</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

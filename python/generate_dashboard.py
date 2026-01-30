@@ -187,7 +187,7 @@ def create_timeline_chart(df):
     df['date'] = df['event_timestamp'].dt.date
 
     # Convert success boolean to readable labels
-    df['result'] = df['success'].map({True: 'Success ✅', False: 'Failed ❌'})
+    df['result'] = df['success'].map({True: 'Success âœ…', False: 'Failed âŒ'})
 
     fig = px.scatter(
         df,
@@ -201,8 +201,8 @@ def create_timeline_chart(df):
             'result': 'Login Result'
         },
         color_discrete_map={
-            'Success ✅': '#00FF00',
-            'Failed ❌': '#FF0000'
+            'Success âœ…': '#00FF00',
+            'Failed âŒ': '#FF0000'
         },
         height=500,
         hover_data={'user_id': True}
@@ -451,12 +451,12 @@ def create_default_template(template_path):
     </head>
     <body>
         <div class="header">
-            <h1>🛡️ SOC Security Dashboard</h1>
+            <h1>SOC Security Dashboard</h1>
             <p class="timestamp">Generated: {{ summary.generated_at }}</p>
         </div>
 
         <div class="dashboard-section">
-            <h2>📊 Overview Metrics</h2>
+            <h2>Overview Metrics</h2>
             <div class="metric-grid">
                 <div class="metric-card">
                     <div class="metric-value">{{ summary.total_events }}</div>
@@ -478,35 +478,35 @@ def create_default_template(template_path):
         </div>
 
         <div class="dashboard-section">
-            <h2>📈 Event Distribution</h2>
+            <h2>Event Distribution</h2>
             <div class="chart-container">
                 {{ charts.event_distribution | safe }}
             </div>
         </div>
 
         <div class="dashboard-section">
-            <h2>📊 Scenario Breakdown</h2>
+            <h2>Scenario Breakdown</h2>
             <div class="chart-container">
                 {{ charts.scenario_bar | safe }}
             </div>
         </div>
 
         <div class="dashboard-section">
-            <h2>🎯 Threat Actor Analysis</h2>
+            <h2>Threat Actor Analysis</h2>
             <div class="chart-container">
                 {{ charts.threat_scatter | safe }}
             </div>
         </div>
 
         <div class="dashboard-section">
-            <h2>⏱️ Attack Timeline</h2>
+            <h2>Attack Timeline</h2>
             <div class="chart-container">
                 {{ charts.attack_timeline | safe }}
             </div>
         </div>
 
         <div class="dashboard-section">
-            <h2>🏢 Critical Assets Under Attack</h2>
+            <h2>Critical Assets Under Attack</h2>
             <ul>
                 {% for asset in critical_assets %}
                 <li class="metric">
@@ -518,7 +518,7 @@ def create_default_template(template_path):
         </div>
 
         <div class="dashboard-section">
-            <h2>👤 Threat Actors</h2>
+            <h2>Threat Actors</h2>
             <ul>
                 {% for actor in threat_actors %}
                 <li class="metric">
@@ -534,12 +534,12 @@ def create_default_template(template_path):
         </div>
 
         <div class="dashboard-section">
-            <h2>✅ Security Recommendations</h2>
+            <h2>Security Recommendations</h2>
             <ul>
-                <li class="metric">🔴 <strong>CRITICAL:</strong> Reset compromised account passwords immediately</li>
-                <li class="metric">🟠 <strong>HIGH:</strong> Block malicious external IP addresses</li>
-                <li class="metric">🟡 <strong>MEDIUM:</strong> Provide security awareness training to targeted users</li>
-                <li class="metric">🔵 <strong>INFO:</strong> Review VPN access policies and implement MFA</li>
+                <li class="metric"><strong>CRITICAL:</strong> Reset compromised account passwords immediately</li>
+                <li class="metric"><strong>HIGH:</strong> Block malicious external IP addresses</li>
+                <li class="metric"><strong>MEDIUM:</strong> Provide security awareness training to targeted users</li>
+                <li class="metric"><strong>INFO:</strong> Review VPN access policies and implement MFA</li>
             </ul>
         </div>
     </body>
@@ -549,7 +549,7 @@ def create_default_template(template_path):
     with open(template_path, 'w', encoding='utf-8') as f:
         f.write(default_html)
 
-    print(f"✅ Default template created successfully")
+    print(f"Default template created successfully")
 
 
 def render_dashboard(metrics, charts):
@@ -617,4 +617,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

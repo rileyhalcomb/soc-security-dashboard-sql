@@ -1,0 +1,181 @@
+{
+  "generated_at": "2026-01-29T23:15:23.508574",
+  "summary": {
+    "total_events": 43,
+    "failed_logins": 17,
+    "successful_logins": 26,
+    "external_threats": 4
+  },
+  "scenarios": [
+    {
+      "scenario": "Normal Activity",
+      "event_count": 12,
+      "failed_count": 3,
+      "success_count": 9
+    },
+    {
+      "scenario": "Service Account",
+      "event_count": 9,
+      "failed_count": 0,
+      "success_count": 9
+    },
+    {
+      "scenario": "Other",
+      "event_count": 9,
+      "failed_count": 2,
+      "success_count": 7
+    },
+    {
+      "scenario": "Password Spraying",
+      "event_count": 8,
+      "failed_count": 8,
+      "success_count": 0
+    },
+    {
+      "scenario": "Brute Force",
+      "event_count": 5,
+      "failed_count": 4,
+      "success_count": 1
+    }
+  ],
+  "threat_actors": [
+    {
+      "ip_address": "185.220.101.47/32",
+      "total_attempts": 5,
+      "successful": 1,
+      "failed": 4,
+      "users_targeted": 1,
+      "usernames": "admin",
+      "severity": "Critical",
+      "x_jitter": 5.09317173547676,
+      "y_jitter": 1.0156787704346426
+    },
+    {
+      "ip_address": "73.241.12.56/32",
+      "total_attempts": 1,
+      "successful": 1,
+      "failed": 0,
+      "users_targeted": 1,
+      "usernames": "tgarcia",
+      "severity": "Medium",
+      "x_jitter": 0.9527599954027144,
+      "y_jitter": 0.979943033120783
+    },
+    {
+      "ip_address": "203.0.113.88/32",
+      "total_attempts": 1,
+      "successful": 1,
+      "failed": 0,
+      "users_targeted": 1,
+      "usernames": "lbrown",
+      "severity": "Medium",
+      "x_jitter": 0.9441976134342296,
+      "y_jitter": 0.9544556447641204
+    },
+    {
+      "ip_address": "198.51.100.42/32",
+      "total_attempts": 8,
+      "successful": 0,
+      "failed": 8,
+      "users_targeted": 8,
+      "usernames": "dbaker, jsmith, kwilson, lbrown, mjones, rjohnson, schen, tgarcia",
+      "severity": "High",
+      "x_jitter": 8.026392775368599,
+      "y_jitter": 8.01791287973271
+    }
+  ],
+  "critical_assets": [
+    {
+      "hostname": "vpn-gateway",
+      "asset_criticality": "HIGH",
+      "attack_count": 8,
+      "unique_attackers": 1
+    },
+    {
+      "hostname": "webserver-prod-01",
+      "asset_criticality": "HIGH",
+      "attack_count": 5,
+      "unique_attackers": 2
+    },
+    {
+      "hostname": "dc-corp-01",
+      "asset_criticality": "CRITICAL",
+      "attack_count": 3,
+      "unique_attackers": 2
+    },
+    {
+      "hostname": "database-prod-01",
+      "asset_criticality": "CRITICAL",
+      "attack_count": 1,
+      "unique_attackers": 1
+    }
+  ],
+  "temporal_analysis": {
+    "hourly_attacks": [
+      {
+        "hour": 2,
+        "attack_count": 1,
+        "is_business_hours": false,
+        "risk_period": "HIGH_RISK"
+      },
+      {
+        "hour": 3,
+        "attack_count": 8,
+        "is_business_hours": false,
+        "risk_period": "HIGH_RISK"
+      },
+      {
+        "hour": 14,
+        "attack_count": 4,
+        "is_business_hours": true,
+        "risk_period": "NORMAL"
+      },
+      {
+        "hour": 16,
+        "attack_count": 3,
+        "is_business_hours": true,
+        "risk_period": "NORMAL"
+      },
+      {
+        "hour": 23,
+        "attack_count": 1,
+        "is_business_hours": false,
+        "risk_period": "HIGH_RISK"
+      }
+    ],
+    "business_hours": [
+      {
+        "period": "Off-Hours",
+        "total_attacks": 25,
+        "unique_attackers": 7,
+        "successful_attempts": 15
+      },
+      {
+        "period": "Business Hours",
+        "total_attacks": 18,
+        "unique_attackers": 6,
+        "successful_attempts": 11
+      }
+    ],
+    "day_of_week": [
+      {
+        "day_name": "Sunday   ",
+        "is_weekend": true,
+        "event_count": 12,
+        "failed_attempts": 8
+      },
+      {
+        "day_name": "Monday   ",
+        "is_weekend": false,
+        "event_count": 25,
+        "failed_attempts": 8
+      },
+      {
+        "day_name": "Saturday ",
+        "is_weekend": true,
+        "event_count": 6,
+        "failed_attempts": 1
+      }
+    ]
+  }
+}
