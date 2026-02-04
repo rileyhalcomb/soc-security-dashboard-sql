@@ -51,6 +51,7 @@ This project implements a complete **security analytics pipeline** using Postgre
 │  │ - user_id    │  │ - host_id    │  │ - date       │       │
 │  │ - username   │  │ - hostname   │  │ - hour       │       │
 │  │ - department │  │ - criticality│  │ - day_of_week│       │
+│  │ - etc...     │  │ - etc...     │  │ - etc...     │       │
 │  └──────────────┘  └──────────────┘  └──────────────┘       │
 │           │               │                                 │
 │           └───────┬───────┘                                 │
@@ -59,10 +60,11 @@ This project implements a complete **security analytics pipeline** using Postgre
 │         │ fact_auth_events     │                            │
 │         │ - event_id           │                            │
 │         │ - user_id (FK)       │                            │
-│         │ - host_id (FK)       │                            │
+│         │ - dest_host_id (FK)  │                            │
 │         │ - source_ip          │                            │
 │         │ - success (bool)     │                            │
 │         │ - event_timestamp    │                            │
+│         │ - etc...             │                            │
 │         └──────────────────────┘                            │
 └─────────────────────────────────────────────────────────────┘
                           │
